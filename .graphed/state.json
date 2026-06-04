@@ -67,8 +67,9 @@
           "wall_clock_s": 0.0
         }
       ],
-      "phase": "DONE",
-      "reject_count": 0
+      "phase": "IMPLEMENTING",
+      "reject_count": 0,
+      "reopened": "adding experimental 3.14/3.14t CI runs"
     }
   },
   "repo": "graphed-awkward",

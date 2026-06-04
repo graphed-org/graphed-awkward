@@ -45,6 +45,29 @@ jobs:
       - name: Pytest + coverage gate (>=90%)
         run: pytest tests/frozen/m3 --cov=graphed_awkward --cov-branch --cov-report=term-missing
 
+  # Free-threaded / bleeding-edge Pythons (plan A.5). Experimental and non-blocking: the awkward /
+  # correctionlib / onnx / pyarrow wheels may lag on 3.14 / 3.14t.
+  test-experimental:
+    name: test (experimental) py${{ matrix.python }}
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.14", "3.14t"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - uses: dtolnay/rust-toolchain@stable
+      - run: |
+          python -m pip install --upgrade pip
+          python -m pip install "${{ env.CORE }}"
+          python -m pip install "${{ env.FRONTEND }}" "${{ env.CORPUS }}"
+          python -m pip install -e ".[dev]"
+          pytest tests/frozen/m3
+
   docs:
     name: docs (sphinx -W)
     runs-on: ubuntu-latest
