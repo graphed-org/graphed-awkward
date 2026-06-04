@@ -27,9 +27,12 @@ awkward API so corpus analyses record a backend-agnostic graph.
 
 ## Validated against the corpus
 
-**ADL queries 1–8 + the AGC object-selection slice** (`graphed_corpus`) all record metadata-only with
-correct typetracer forms; `materialize` matches plain awkward; every node maps to a user-code line;
-correctionlib + ONNX inputs record `External` nodes whose descriptors content-hash the file.
+**ADL queries 1–8 run end-to-end as integration tests** (`test_integration_adl.py`): each is recorded
+through graphed, executed via `materialize`, histogrammed, and asserted to reproduce the corpus
+plain-awkward reference histogram **bit-for-bit** on the same 20k events. The AGC object-selection
+slice + all 9 analyses also record metadata-only with correct typetracer forms; every node maps to a
+user-code line; correctionlib + ONNX inputs record `External` nodes whose descriptors content-hash the
+file. (The integration tests caught a real q8 port bug that the record-only tests missed.)
 
 ## Layout / gates
 

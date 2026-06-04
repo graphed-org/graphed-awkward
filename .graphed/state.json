@@ -67,8 +67,9 @@
           "wall_clock_s": 0.0
         }
       ],
-      "phase": "DONE",
-      "reject_count": 0
+      "phase": "IMPLEMENTING",
+      "reject_count": 0,
+      "reopened": "added ADL 1-8 end-to-end integration tests; fixed q8 port bug found by them"
     }
   },
   "repo": "graphed-awkward",
