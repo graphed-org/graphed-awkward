@@ -25,7 +25,7 @@
           "integrity_ok": true,
           "iteration_index": 0,
           "lint_ok": true,
-          "pass_count": 32,
+          "pass_count": 41,
           "tokens_spent": 0,
           "tree_hash": "local",
           "types_ok": true,
@@ -60,19 +60,18 @@
           "integrity_ok": true,
           "iteration_index": 0,
           "lint_ok": true,
-          "pass_count": 32,
+          "pass_count": 41,
           "tokens_spent": 0,
           "tree_hash": "local",
           "types_ok": true,
           "wall_clock_s": 0.0
         }
       ],
-      "phase": "IMPLEMENTING",
-      "reject_count": 0,
-      "reopened": "added ADL 1-8 end-to-end integration tests; fixed q8 port bug found by them"
+      "phase": "DONE",
+      "reject_count": 0
     }
   },
   "repo": "graphed-awkward",
   "schema_version": 1,
-  "updated_at": "2026-06-04T19:53:52Z"
+  "updated_at": "2026-06-04T20:16:14Z"
 }
