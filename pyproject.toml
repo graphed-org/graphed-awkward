@@ -1,0 +1,66 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "graphed-awkward"
+version = "0.0.1"
+description = "Reference awkward backend for graphed: typetracer forms + real provenance, correctionlib/ONNX External nodes"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{ name = "graphed-org" }]
+classifiers = [
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+]
+dependencies = ["graphed", "graphed-core", "awkward>=2.6", "numpy>=1.24"]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-cov", "hypothesis", "mypy", "ruff", "correctionlib", "onnx", "pyarrow", "pandas"]
+docs = ["sphinx", "furo"]
+
+[project.urls]
+Homepage = "https://github.com/graphed-org/graphed-awkward"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/graphed_awkward"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "tests/frozen/m3"]
+addopts = "-q"
+
+[tool.coverage.run]
+branch = true
+source = ["graphed_awkward"]
+
+[tool.coverage.report]
+fail_under = 90
+show_missing = true
+
+[tool.ruff]
+line-length = 110
+src = ["src", "tests"]
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+files = ["src"]
+
+# awkward/numpy are dynamically typed at the array boundary; treat them as untyped there.
+[[tool.mypy.overrides]]
+module = ["awkward.*", "numpy.*", "onnx.*"]
+ignore_missing_imports = true
+follow_imports = "skip"
+
+[[tool.mypy.overrides]]
+module = ["graphed_awkward._ops", "graphed_awkward.backend", "graphed_awkward.functions"]
+warn_return_any = false
