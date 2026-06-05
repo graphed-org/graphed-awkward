@@ -48,3 +48,14 @@ tests/frozen/m3/                  recording, eval, provenance, payloads, metadat
 `pytest tests/frozen/m3 --cov=graphed_awkward` (≥90%) · `sphinx -W`. Depends on `graphed` +
 `graphed-core` + `awkward` + `numpy`; tests also use `graphed-corpus`, `correctionlib`, `onnx`,
 `pyarrow`, `pandas`. Status: see `.graphed/state.json`.
+
+## M5 additions (necessary-buffer projection)
+
+- `graphed_awkward.project(array, *, on_fail)` — column projection via a **reporting typetracer**:
+  builds one per source (metadata only, no data read), replays the recorded stages symbolically,
+  collects touched buffer form-keys, maps them to column names. The output is materialized so its
+  columns are touched; an opaque `map` touches its inputs and honors the on-fail policy.
+- **Over-touch protected** (`tests/frozen/m5/test_no_overtouch.py`): reading one column reads ONLY
+  that column; `jets[jets.pt>30].eta` reads exactly `{Jet.pt, Jet.eta}`, never sibling columns —
+  the dask-awkward over-touching bug this milestone exists to avoid. Projection is store-state
+  independent (correct whether or not the graph has been M4-reduced).

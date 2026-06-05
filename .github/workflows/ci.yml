@@ -43,7 +43,7 @@ jobs:
       - name: Mypy (strict)
         run: mypy
       - name: Pytest + coverage gate (>=90%)
-        run: pytest tests/frozen/m3 --cov=graphed_awkward --cov-branch --cov-report=term-missing
+        run: pytest tests/frozen --cov=graphed_awkward --cov-branch --cov-report=term-missing
 
   # Free-threaded / bleeding-edge Pythons (plan A.5). Experimental and non-blocking: the awkward /
   # correctionlib / onnx / pyarrow wheels may lag on 3.14 / 3.14t.
@@ -66,7 +66,7 @@ jobs:
           python -m pip install "${{ env.CORE }}"
           python -m pip install "${{ env.FRONTEND }}" "${{ env.CORPUS }}"
           python -m pip install -e ".[dev]"
-          pytest tests/frozen/m3
+          pytest tests/frozen
 
   docs:
     name: docs (sphinx -W)
