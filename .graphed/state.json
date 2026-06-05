@@ -32,7 +32,7 @@
           "wall_clock_s": 0.0
         }
       ],
-      "phase": "REVIEW",
+      "phase": "DONE",
       "reject_count": 0
     },
     "M3": {
@@ -67,7 +67,7 @@
           "wall_clock_s": 0.0
         }
       ],
-      "phase": "REVIEW",
+      "phase": "DONE",
       "reject_count": 0
     },
     "M5": {
@@ -102,11 +102,11 @@
           "wall_clock_s": 0.0
         }
       ],
-      "phase": "REVIEW",
+      "phase": "DONE",
       "reject_count": 0
     }
   },
   "repo": "graphed-awkward",
   "schema_version": 1,
-  "updated_at": "2026-06-05T11:21:34Z"
+  "updated_at": "2026-06-05T11:25:58Z"
 }
