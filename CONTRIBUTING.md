@@ -1,7 +1,7 @@
 # Contributing to graphed-awkward
 
 Part of the `graphed` project, governed by the gated three-role pipeline. The root
-[`graphed-project/CLAUDE.md`](https://github.com/graphed-org/graphed-project) and the project plan
+[`graphed-project/CLAUDE.md`](https://github.com/graphed-org/graphed-project-mvp) and the project plan
 are authoritative; the plan always wins.
 
 ## Guardrails (M3)
@@ -20,9 +20,9 @@ under test. Dispute a frozen test via `.graphed/<Mx>/disputes/<test_id>.md`.
 ## Local gates
 
 ```bash
-pip install "graphed-core @ git+https://github.com/graphed-org/graphed-core@main"   # needs Rust
-pip install "graphed @ git+https://github.com/graphed-org/graphed@main" \
-            "graphed-corpus @ git+https://github.com/graphed-org/graphed-corpus@main"
+pip install "graphed-core @ git+https://github.com/graphed-org/graphed-core-mvp@main"   # needs Rust
+pip install "graphed @ git+https://github.com/graphed-org/graphed-mvp@main" \
+            "graphed-corpus @ git+https://github.com/graphed-org/graphed-corpus-mvp@main"
 pip install -e ".[dev,docs]"
 ruff check . && ruff format --check . && mypy
 pytest tests/frozen/m3 --cov=graphed_awkward --cov-branch   # >=90%

@@ -5,7 +5,7 @@ The **reference backend** for `graphed` (milestone M3): `op_form` uses the awkwa
 the awkward API so corpus analyses record a backend-agnostic graph. External inputs (correctionlib
 corrections, ONNX models) record `External` nodes with **content-hashed** `PayloadDescriptor`s. Part
 of the [`graphed-org`](https://github.com/graphed-org) project; see
-[`graphed-project`](https://github.com/graphed-org/graphed-project) for root guidance and the plan.
+[`graphed-project`](https://github.com/graphed-org/graphed-project-mvp) for root guidance and the plan.
 
 ```python
 from graphed import Session
