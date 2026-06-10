@@ -59,3 +59,11 @@ tests/frozen/m3/                  recording, eval, provenance, payloads, metadat
   that column; `jets[jets.pt>30].eta` reads exactly `{Jet.pt, Jet.eta}`, never sibling columns —
   the dask-awkward over-touching bug this milestone exists to avoid. Projection is store-state
   independent (correct whether or not the graph has been M4-reduced).
+
+## M11 factorization (design review 2026-06-10)
+
+`graphed.Array` is backend-idiom-neutral; each backend completes its own idiom. **awkward's idiom
+is functions over arrays** — this repo deliberately supplies NO `array_type` proxy and NO member
+functions: the user surface is the `gak` namespace (plus ufuncs/operators, which both idioms
+share). Pinned by `tests/frozen/m11/test_functions_only_idiom.py`. The numpy method/property idiom
+lives in `graphed-numpy` (`NumpyArray`).
