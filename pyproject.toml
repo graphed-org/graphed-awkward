@@ -19,7 +19,7 @@ classifiers = [
 dependencies = ["graphed", "graphed-core", "awkward>=2.6", "numpy>=1.24"]
 
 [project.optional-dependencies]
-dev = ["pytest", "pytest-cov", "hypothesis", "mypy", "ruff", "correctionlib", "onnx", "pyarrow", "pandas"]
+dev = ["pytest", "pytest-cov", "hypothesis", "mypy", "ruff", "correctionlib", "onnx", "pyarrow", "pandas", "vector"]
 docs = ["sphinx", "furo"]
 
 [project.urls]
@@ -30,7 +30,7 @@ packages = ["src/graphed_awkward"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-pythonpath = ["src", "tests/frozen/m3", "tests/frozen/m11", "tests/frozen/m15", "tests/frozen/m16", "tests/frozen/m17"]
+pythonpath = ["src", "tests/frozen/m3", "tests/frozen/m11", "tests/frozen/m15", "tests/frozen/m16", "tests/frozen/m17", "tests/frozen/m18"]
 addopts = "-q"
 
 [tool.coverage.run]
