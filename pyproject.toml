@@ -30,7 +30,7 @@ packages = ["src/graphed_awkward"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-pythonpath = ["src", "tests/frozen/m3", "tests/frozen/m11"]
+pythonpath = ["src", "tests/frozen/m3", "tests/frozen/m11", "tests/frozen/m15"]
 addopts = "-q"
 
 [tool.coverage.run]
